@@ -2,9 +2,8 @@ package com.hy.sys.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hy.sys.entity.UserRole;
+import  com.hy.sys.entity.UserRole;
 import org.apache.ibatis.annotations.Mapper;
-
 /**
  * <p>
  * 用户角色表 Mapper 接口

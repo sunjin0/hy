@@ -1,9 +1,8 @@
 package com.hy.sys.vo;
 
-import com.hy.sys.entity.User;
+import  com.hy.sys.entity.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 import java.util.HashMap;
 import java.util.List;
 

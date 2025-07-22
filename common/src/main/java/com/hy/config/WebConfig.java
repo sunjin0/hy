@@ -36,7 +36,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new GlobalInterceptor())
                 .addPathPatterns("/**"); // 拦截所有路径;
     }
-
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();

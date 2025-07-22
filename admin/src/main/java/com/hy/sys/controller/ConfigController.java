@@ -1,13 +1,15 @@
 package com.hy.sys.controller;
 
+import java.util.List;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hy.entity.WebResponse;
-import com.hy.i18n.I18nUtils;
 import com.hy.permission.Permission;
-import com.hy.sys.entity.Config;
 import com.hy.sys.service.ConfigService;
-import com.hy.sys.vo.ConfigVo;
+import com.hy.entity.Option;
+import com.hy.entity.WebResponse;
+import com.hy.sys.entity.Config;
+import com.hy.i18n.I18nUtils;
 import com.hy.validator.ValidEntity;
+import com.hy.sys.vo.ConfigVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -15,8 +17,10 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Nullable;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Api(value = "系统配置服务 API")
 @Validated
@@ -25,7 +29,6 @@ import java.util.List;
 @RequestMapping("/api/sys/config")
 public class ConfigController {
     private final ConfigService configService;
-
     public ConfigController(ConfigService configService) {
         this.configService = configService;
     }
@@ -39,7 +42,6 @@ public class ConfigController {
         Page<ConfigVo> list = configService.list(config);
         return WebResponse.Page(list.getRecords(), list.getTotal());
     }
-
     @ApiOperation("获取配置")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", required = true),
@@ -70,11 +72,10 @@ public class ConfigController {
     @PostMapping("/add")
     public WebResponse<Boolean> save(@RequestBody
                                      @ValidEntity(fieldNames = {"code", "name"})
-                                     Config config) {
+                                         Config config) {
         boolean save = configService.save(config);
-        return WebResponse.OK(I18nUtils.getMessage(save ? "add.success" : "add.fail"), save);
+            return WebResponse.OK(I18nUtils.getMessage(save ? "add.success" : "add.fail"), save);
     }
-
     @ApiOperation("修改字典")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "访问令牌", required = true, dataType = "string", paramType = "header")
@@ -82,8 +83,8 @@ public class ConfigController {
     @Permission(path = "/sys/config", type = Permission.Type.Write)
     @PostMapping("/update")
     public WebResponse<Boolean> update(@RequestBody
-                                       @ValidEntity(fieldNames = {"code", "name"})
-                                       Config config) {
+                                      @ValidEntity(fieldNames = {"code", "name"})
+                                           Config config) {
         boolean update = configService.updateById(config);
         return WebResponse.OK(I18nUtils.getMessage(update ? "update.success" : "update.fail"), update);
     }

@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hy.entity.BaseEntity;
-import com.hy.enums.ResourceType;
-import com.hy.i18n.I18nUtils;
-import com.hy.sys.entity.Resource;
 import com.hy.sys.mapper.ResourceMapper;
 import com.hy.sys.service.ResourceService;
+import com.hy.entity.BaseEntity;
+import com.hy.sys.entity.Resource;
+import com.hy.enums.ResourceType;
+import com.hy.i18n.I18nUtils;
 import com.hy.sys.vo.ResourceVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -72,7 +72,7 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> i
             resourceVo.setTitle("en_US".equals(lng) ? record.getName() : record.getNameCn());
             return resourceVo;
         }).collect(Collectors.toList());
-        resourceVos.addAll(list);
+        resourceVos .addAll(list);
         // 处理父子级关系
         LinkedHashMap<String, ResourceVo> map = new LinkedHashMap<>();
         resourceVos.forEach(v -> {

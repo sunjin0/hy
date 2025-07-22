@@ -1,6 +1,6 @@
 package com.hy.sys.vo;
 
-import com.hy.sys.entity.RoleResource;
+import  com.hy.sys.entity.RoleResource;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -1,6 +1,6 @@
 package com.hy.sys.vo;
 
-import com.hy.sys.entity.Dict;
+import  com.hy.sys.entity.Dict;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

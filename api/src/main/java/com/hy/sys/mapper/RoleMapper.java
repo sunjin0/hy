@@ -2,7 +2,7 @@ package com.hy.sys.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hy.sys.entity.Role;
+import  com.hy.sys.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

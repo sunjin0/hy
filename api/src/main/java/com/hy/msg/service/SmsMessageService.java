@@ -2,9 +2,9 @@ package com.hy.msg.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hy.exception.ServerException;
 import com.hy.msg.entity.Sms;
 import com.hy.msg.vo.SmsVo;
+import com.hy.exception.ServerException;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -37,7 +37,7 @@ public interface SmsMessageService extends IService<Sms> {
     /**
      * 按 ID 获取
      *
-     * @param id ID
+      * @param id ID
      * @return {@link Sms }
      * @throws ServerException 服务器异常
      */
@@ -67,7 +67,7 @@ public interface SmsMessageService extends IService<Sms> {
     /**
      * 删除
      *
-     * @param id ID
+      * @param id ID
      * @return {@link Boolean }
      * @throws ServerException 服务器异常
      */

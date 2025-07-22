@@ -1,10 +1,12 @@
 package com.hy.sys.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.hy.exception.ServerException;
 import com.hy.sys.entity.User;
 import com.hy.sys.vo.ResourceVo;
 import com.hy.sys.vo.UserVo;
+
+import com.hy.exception.ServerException;
+import com.baomidou.mybatisplus.extension.service.IService;
+
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -22,11 +24,11 @@ import java.util.List;
 public interface UserService extends IService<User> {
 
     /**
-     * 注册
-     *
-     * @param user 用户
-     * @return {@link Boolean }
-     */
+       * 注册
+       *
+       * @param user  用户
+       * @return {@link Boolean }
+       */
     @ApiOperation("注册")
     @ApiImplicitParams(
             {
@@ -41,7 +43,7 @@ public interface UserService extends IService<User> {
     /**
      * 重置密码
      *
-     * @param user 用户
+     * @param user  用户
      * @return {@link Boolean }
      */
     @ApiOperation("重置密码")

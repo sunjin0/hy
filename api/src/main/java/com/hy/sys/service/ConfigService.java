@@ -1,11 +1,13 @@
 package com.hy.sys.service;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.hy.entity.Option;
 import com.hy.sys.entity.Config;
 import com.hy.sys.vo.ConfigVo;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -32,7 +34,6 @@ public interface ConfigService extends IService<Config> {
      * @return {@link Config }
      */
     Config info(String id);
-
     /**
      * 删除
      *
@@ -40,7 +41,6 @@ public interface ConfigService extends IService<Config> {
      * @return boolean
      */
     boolean delete(String id);
-
     /**
      * 获取值
      *

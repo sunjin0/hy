@@ -1,22 +1,24 @@
 package com.hy.sys.controller;
 
 
+
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hy.permission.Permission;
+import com.hy.sys.service.ResourceService;
 import com.hy.entity.Option;
 import com.hy.entity.WebResponse;
+import com.hy.sys.entity.Resource;
 import com.hy.enums.ResourceType;
 import com.hy.exception.ServerException;
 import com.hy.i18n.I18nUtils;
-import com.hy.permission.Permission;
-import com.hy.sys.entity.Resource;
-import com.hy.sys.service.ResourceService;
-import com.hy.sys.vo.ResourceVo;
 import com.hy.validator.ValidEntity;
+import com.hy.sys.vo.ResourceVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,10 +76,9 @@ public class ResourceController {
     public WebResponse<Boolean> save(@RequestBody
                                      @ValidEntity(fieldNames = {"name", "nameCn", "type"})
                                      Resource resource) throws ServerException {
-        boolean save = resourceService.save(resource, resource.getLeaf());
+        boolean save = resourceService.save(resource,resource.getLeaf());
         return WebResponse.OK(I18nUtils.getMessage(save ? "add.success" : "add.fail"), save);
     }
-
     @ApiOperation(value = "更新资源")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "访问令牌", required = true, dataType = "string", paramType = "header")
@@ -85,8 +86,8 @@ public class ResourceController {
     @Permission(path = "/sys/resource", type = Permission.Type.Write)
     @PostMapping("/update")
     public WebResponse<Boolean> update(@RequestBody
-                                       @ValidEntity(fieldNames = {"name", "nameCn", "type"})
-                                       Resource resource) {
+                                      @ValidEntity(fieldNames = {"name", "nameCn", "type"})
+                                           Resource resource){
         boolean update = resourceService.updateById(resource);
         return WebResponse.OK(I18nUtils.getMessage(update ? "update.success" : "update.fail"), update);
     }
@@ -136,7 +137,7 @@ public class ResourceController {
             option.setValue(resource.getId());
             return option;
         }).collect(Collectors.toList());
-        options.add(0, new Option(I18nUtils.getMessage("system.resource.not.parent"), "0"));
+        options.add(0, new Option(I18nUtils.getMessage("system.resource.not.parent"),"0"));
         return WebResponse.OK(options);
     }
 

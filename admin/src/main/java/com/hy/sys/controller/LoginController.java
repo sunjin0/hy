@@ -1,13 +1,13 @@
 package com.hy.sys.controller;
 
+import com.hy.permission.Permission;
+import com.hy.sys.service.UserService;
 import com.hy.entity.WebResponse;
 import com.hy.exception.ServerException;
 import com.hy.i18n.I18nUtils;
-import com.hy.permission.Permission;
-import com.hy.sys.service.UserService;
+import com.hy.validator.ValidEntity;
 import com.hy.sys.vo.ResourceVo;
 import com.hy.sys.vo.UserVo;
-import com.hy.validator.ValidEntity;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -44,8 +44,8 @@ public class LoginController {
             @ApiImplicitParam(name = "verificationCode", value = "验证码", required = true),
     })
     public WebResponse<UserVo> login(@RequestBody
-                                     @ValidEntity(fieldNames = {"email", "verificationCode"})
-                                     UserVo user) throws ServerException {
+                                        @ValidEntity(fieldNames = {"email", "verificationCode"})
+                                       UserVo user) throws ServerException {
         return WebResponse.OK(userService.login(user));
     }
 
@@ -85,7 +85,7 @@ public class LoginController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "email", value = "邮箱", required = true),
     })
-    @Permission(required = false)
+    @Permission(required = false )
     @PostMapping("/send")
     public WebResponse<Boolean> sendVerificationCode(@RequestBody
                                                      @ValidEntity(fieldNames = {"email"})
@@ -101,6 +101,6 @@ public class LoginController {
     @GetMapping("/logout")
     public WebResponse<Boolean> logout() {
         boolean logout = userService.logout();
-        return WebResponse.OK(I18nUtils.getMessage(logout ? "logout.success" : "logout.fail"));
+        return WebResponse.OK(I18nUtils.getMessage(logout?"logout.success":"logout.fail"));
     }
 }

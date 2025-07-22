@@ -53,7 +53,7 @@ public class Resource extends BaseEntity {
     /**
      * 父级资源id
      */
-    private Integer parentId;
+    private String parentId;
     /**
      * 叶子节点
      * true:叶子节点

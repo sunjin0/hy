@@ -1,15 +1,14 @@
 package com.hy.sys.controller;
 
 
-
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.hy.entity.WebResponse;
+import com.hy.i18n.I18nUtils;
 import com.hy.permission.Permission;
+import com.hy.sys.entity.RoleResource;
 import com.hy.sys.service.RoleResourceService;
-import  com.hy.entity.WebResponse;
-import  com.hy.sys.entity.RoleResource;
-import  com.hy.i18n.I18nUtils;
-import  com.hy.validator.ValidEntity;
-import  com.hy.sys.vo.RoleResourceVo;
+import com.hy.sys.vo.RoleResourceVo;
+import com.hy.validator.ValidEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

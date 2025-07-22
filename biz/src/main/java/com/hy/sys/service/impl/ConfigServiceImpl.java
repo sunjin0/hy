@@ -1,20 +1,21 @@
 package com.hy.sys.service.impl;
 
-import com.hy.sys.mapper.ConfigMapper;
-import com.hy.entity.Option;
-import com.hy.sys.entity.Config;
-import com.hy.i18n.I18nUtils;
-import com.hy.sys.vo.ConfigVo;
-import com.hy.sys.service.ConfigService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hy.sys.entity.Config;
+import com.hy.sys.mapper.ConfigMapper;
+import com.hy.sys.service.ConfigService;
+import com.hy.sys.vo.ConfigVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 /**
@@ -90,6 +91,7 @@ public class ConfigServiceImpl extends ServiceImpl<ConfigMapper, Config> impleme
         voPage.setTotal(configPage.getTotal());
         return voPage;
     }
+
     @Override
     public Config info(String id) {
         return getById(id);
@@ -115,6 +117,7 @@ public class ConfigServiceImpl extends ServiceImpl<ConfigMapper, Config> impleme
         return update(Wrappers.lambdaUpdate(Config.class)
                 .in(Config::getId, ids));
     }
+
     @Override
     public String getValue(String code) {
         Config one = this.getOne(Wrappers.lambdaQuery(Config.class)

@@ -1,8 +1,7 @@
 package com.hy.sys.service;
 
-import com.hy.sys.entity.Role;
-
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hy.sys.entity.Role;
 
 /**
  * <p>

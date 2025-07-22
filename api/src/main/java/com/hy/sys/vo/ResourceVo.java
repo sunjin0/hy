@@ -1,9 +1,11 @@
 package com.hy.sys.vo;
 
-import  com.hy.sys.entity.Resource;
+import com.hy.sys.entity.Resource;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 import java.util.List;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ResourceVo extends Resource {

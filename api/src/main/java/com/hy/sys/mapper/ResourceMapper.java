@@ -2,8 +2,9 @@ package com.hy.sys.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import  com.hy.sys.entity.Resource;
+import com.hy.sys.entity.Resource;
 import org.apache.ibatis.annotations.Mapper;
+
 /**
  * <p>
  * 资源表 Mapper 接口

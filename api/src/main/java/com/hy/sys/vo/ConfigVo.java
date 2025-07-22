@@ -1,6 +1,6 @@
 package com.hy.sys.vo;
 
-import  com.hy.sys.entity.Config;
+import com.hy.sys.entity.Config;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,8 +9,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ConfigVo extends Config {
-private String key;
-private List<ConfigVo> children;
+    private String key;
+    private List<ConfigVo> children;
     private Long current;
     private Long pageSize;
-    }
+}

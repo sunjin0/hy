@@ -1,12 +1,8 @@
 package com.hy.sys.entity;
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hy.entity.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -24,7 +20,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("sys_role_resource")
 public class RoleResource extends BaseEntity {
-
 
 
     /**

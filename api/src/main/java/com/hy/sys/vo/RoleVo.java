@@ -1,10 +1,8 @@
 package com.hy.sys.vo;
 
-import  com.hy.sys.entity.Role;
+import com.hy.sys.entity.Role;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data

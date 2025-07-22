@@ -1,18 +1,17 @@
 package com.hy.sys.controller;
 
 
-
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import  com.hy.permission.Permission;
-import  com.hy.sys.service.UserService;
-import  com.hy.entity.WebResponse;
-import  com.hy.sys.entity.User;
-import  com.hy.exception.ServerException;
-import  com.hy.i18n.I18nUtils;
-import  com.hy.validator.ValidEntity;
-import  com.hy.sys.vo.UserVo;
+import com.hy.entity.WebResponse;
+import com.hy.exception.ServerException;
+import com.hy.i18n.I18nUtils;
+import com.hy.permission.Permission;
+import com.hy.sys.entity.User;
+import com.hy.sys.service.UserService;
+import com.hy.sys.vo.UserVo;
+import com.hy.validator.ValidEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -107,8 +106,9 @@ public class UserController {
             userService.bindRole(User.getId(), User.getRoleIds());
         }
         boolean saved = userService.save(User);
-            return WebResponse.OK(saved ? I18nUtils.getMessage("add.success") : I18nUtils.getMessage("add.fail"), true);
+        return WebResponse.OK(saved ? I18nUtils.getMessage("add.success") : I18nUtils.getMessage("add.fail"), true);
     }
+
     @ApiOperation("管理员修改")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "访问令牌", required = true, dataType = "string", paramType = "header")
@@ -118,7 +118,7 @@ public class UserController {
     @PostMapping("/update")
     public WebResponse<Boolean> update(@RequestBody
                                        @ValidEntity(fieldNames = {"username", "phone", "email", "avatar"})
-                                       UserVo User)throws ServerException {
+                                       UserVo User) throws ServerException {
         // 密码加密
         if (StringUtils.isNotEmpty(User.getPassword())) {
             User.setPassword(encoder.encode(User.getPassword()));

@@ -3,9 +3,9 @@ package com.hy.sys.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hy.sys.entity.UserRole;
 import com.hy.sys.mapper.UserRoleMapper;
 import com.hy.sys.service.UserRoleService;
-import com.hy.sys.entity.UserRole;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

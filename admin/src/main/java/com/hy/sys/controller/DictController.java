@@ -1,15 +1,14 @@
 package com.hy.sys.controller;
 
-import java.util.List;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hy.permission.Permission;
-import com.hy.sys.service.DictService;
 import com.hy.entity.Option;
 import com.hy.entity.WebResponse;
-import com.hy.sys.entity.Dict;
 import com.hy.i18n.I18nUtils;
-import com.hy.validator.ValidEntity;
+import com.hy.permission.Permission;
+import com.hy.sys.entity.Dict;
+import com.hy.sys.service.DictService;
 import com.hy.sys.vo.DictVo;
+import com.hy.validator.ValidEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -76,8 +75,9 @@ public class DictController {
                                      @ValidEntity(fieldNames = {"code", "name", "nameCn"})
                                      Dict dict) {
         boolean save = dictService.save(dict);
-            return WebResponse.OK(I18nUtils.getMessage(save ? "add.success" : "add.fail"), save);
+        return WebResponse.OK(I18nUtils.getMessage(save ? "add.success" : "add.fail"), save);
     }
+
     @ApiOperation("修改字典")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "访问令牌", required = true, dataType = "string", paramType = "header")
@@ -85,8 +85,8 @@ public class DictController {
     @Permission(path = "/sys/dict", type = Permission.Type.Write)
     @PostMapping("/update")
     public WebResponse<Boolean> update(@RequestBody
-                                      @ValidEntity(fieldNames = {"code", "name", "nameCn"})
-                                      Dict dict) {
+                                       @ValidEntity(fieldNames = {"code", "name", "nameCn"})
+                                       Dict dict) {
         boolean update = dictService.updateById(dict);
         return WebResponse.OK(I18nUtils.getMessage(update ? "update.success" : "update.fail"), update);
     }

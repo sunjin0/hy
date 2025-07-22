@@ -19,9 +19,10 @@ import java.util.Map;
  */
 
 public class TokenUtils {
+    public static final String TOKEN_KEY = "TokenList";
     // 签名密钥
     private static final String SECRET_KEY = "1sa(s}>s.@jj,asj.!hg5454";
-    public static final String TOKEN_KEY = "TokenList";
+
     /**
      * 创建令牌
      *

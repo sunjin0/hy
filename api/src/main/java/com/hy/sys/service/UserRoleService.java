@@ -1,9 +1,7 @@
 package com.hy.sys.service;
 
-import com.hy.sys.entity.UserRole;
-
 import com.baomidou.mybatisplus.extension.service.IService;
-
+import com.hy.sys.entity.UserRole;
 
 import java.util.List;
 

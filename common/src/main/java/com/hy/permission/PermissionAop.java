@@ -1,22 +1,21 @@
 package com.hy.permission;
 
 import com.hy.exception.ServerException;
-import  com.hy.i18n.I18nUtils;
+import com.hy.i18n.I18nUtils;
 import com.hy.local.CurrentUser;
 import com.hy.utils.TokenUtils;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 /**
  * AOP 权限
@@ -58,7 +57,7 @@ public class PermissionAop {
             return;
 
         HashMap<String, String> user = CurrentUser.getUser();
-        if (user == null|| user.get("userId") == null) {
+        if (user == null || user.get("userId") == null) {
             throw new ServerException(401, I18nUtils.getMessage("auth.error.no.permission"));
         }
         String userId = user.get("userId");

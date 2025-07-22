@@ -4,9 +4,9 @@ package com.hy.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hy.sys.entity.RoleResource;
 import com.hy.sys.mapper.RoleResourceMapper;
 import com.hy.sys.service.RoleResourceService;
-import com.hy.sys.entity.RoleResource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

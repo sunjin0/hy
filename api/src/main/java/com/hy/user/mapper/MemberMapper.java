@@ -1,7 +1,7 @@
 package com.hy.user.mapper;
 
-import com.hy.user.entity.Member;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hy.user.entity.Member;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

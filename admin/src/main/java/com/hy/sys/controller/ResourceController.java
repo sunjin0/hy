@@ -74,7 +74,7 @@ public class ResourceController {
     public WebResponse<Boolean> save(@RequestBody
                                      @ValidEntity(fieldNames = {"name", "nameCn", "type"})
                                      Resource resource) throws ServerException {
-        boolean save = resourceService.save(resource,resource.getLeaf());
+        boolean save = resourceService.save(resource, resource.getLeaf());
         return WebResponse.OK(I18nUtils.getMessage(save ? "add.success" : "add.fail"), save);
     }
 
@@ -128,7 +128,6 @@ public class ResourceController {
     public WebResponse<List<Option>> select() throws ServerException {
         List<Resource> list = resourceService.list(Wrappers.lambdaQuery(Resource.class)
                 .eq(Resource::getType, ResourceType.ROUTE.getCode())
-                .eq(Resource::getLeaf, false)
                 .orderByAsc(Resource::getSortNum));
         List<Option> options = list.stream().map(resource -> {
             Option option = new Option();

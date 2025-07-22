@@ -1,9 +1,9 @@
 package com.hy.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hy.entity.Token;
 import com.hy.sys.mapper.TokenMapper;
 import com.hy.sys.service.TokenService;
-import com.hy.entity.Token;
 import org.springframework.stereotype.Service;
 
 /**

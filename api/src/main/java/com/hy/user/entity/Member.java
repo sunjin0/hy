@@ -17,12 +17,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class Member extends BaseEntity {
 
     /**
-     * 名称
-     */
-    @ApiModelProperty(value = "名称")
-    private String name;
-
-    /**
      * 用户名
      */
     @ApiModelProperty(value = "用户名")
@@ -35,21 +29,21 @@ public class Member extends BaseEntity {
     private String password;
 
     /**
-     * 电话
+     * 昵称
      */
-    @ApiModelProperty(value = "电话")
-    private String phone;
+    @ApiModelProperty(value = "昵称")
+    private String nickname;
 
     /**
-     * 邮件
+     * 邮箱
      */
-    @ApiModelProperty(value = "邮件")
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
     /**
-     * 头像
+     * 手机号
      */
-    @ApiModelProperty(value = "头像")
-    private String avatar;
+    @ApiModelProperty(value = "手机号")
+    private String phone;
 
 }

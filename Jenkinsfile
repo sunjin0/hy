@@ -1,9 +1,6 @@
 pipeline {
     agent any
     triggers { githubPush() }
-    tools {
-        git 'Default'  // 使用名为Default的Git工具
-    }
     stages {
         stage('Checkout') {
             steps {

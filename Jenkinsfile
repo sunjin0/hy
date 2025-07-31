@@ -1,6 +1,10 @@
 pipeline {
     agent any
     triggers { githubPush() }
+    tools {
+            maven 'Maven3.9.11'  // 这里需要与 Jenkins 全局配置中的 Maven 名称一致
+            git 'Git'
+        }
     stages {
         stage('Checkout') {
             steps {

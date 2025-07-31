@@ -4,9 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                retry(3) {
-                    checkout scm
-                }
+                  checkout scm
             }
         }
 
@@ -33,20 +31,12 @@ pipeline {
     post {
         success {
             script {
-                try {
                     githubNotify(status: 'SUCCESS', description: '构建成功!')
-                } catch (e) {
-                    echo "GitHub通知失败: ${e}"
-                }
             }
         }
         failure {
             script {
-                try {
                     githubNotify(status: 'FAILURE', description: '构建失败!')
-                } catch (e) {
-                    echo "GitHub通知失败: ${e}"
-                }
             }
         }
     }

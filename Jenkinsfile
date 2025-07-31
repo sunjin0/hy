@@ -10,13 +10,17 @@ pipeline {
 
         stage('Build Admin') {
             steps {
-                sh 'mvn clean package -pl admin -am'
+                sh 'echo "后台服务构建开始..."'
+                sh 'mvn clean package -pl admin -am '
+                sh 'echo "后台服务构建完成..."'
             }
         }
 
         stage('Build Front') {
             steps {
+                 sh 'echo "前端服务构建开始..."'
                 sh 'mvn clean package -pl front -am'
+                sh 'echo "前端服务构建完成..."'
             }
         }
 

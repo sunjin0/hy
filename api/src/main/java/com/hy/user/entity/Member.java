@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
-* Member"实体类"
+* Member"实体类"}
 */
 @Data
 @EqualsAndHashCode(callSuper = false)

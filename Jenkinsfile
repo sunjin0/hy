@@ -16,7 +16,6 @@ pipeline {
             }
         }
 
-
         stage('Build Docker Images') {
             steps {
                 sh 'echo "构建 Docker 镜像..."'
@@ -38,23 +37,21 @@ pipeline {
             }
         }
     }
-post {
-    success {
-        script {
-            step([$class: 'GitHubCommitStatusSetter',
-                  reposSource: [$class: 'GitHubScmSource'],
-                  contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
-                  statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'SUCCESS', state: 'SUCCESS']]]])
-        }
-    }
-    failure {
-        script {
-            step([$class: 'GitHubCommitStatusSetter',
-                  reposSource: [$class: 'GitHubScmSource'],
-                  contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
-                  statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'FAILURE', state: 'FAILURE']]]])
-        }
-    }
-}
 
+    post {
+        success {
+            script {
+                step([$class: 'GitHubCommitStatusSetter',
+                      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
+                      statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'SUCCESS', state: 'SUCCESS']]]])
+            }
+        }
+        failure {
+            script {
+                step([$class: 'GitHubCommitStatusSetter',
+                      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
+                      statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'FAILURE', state: 'FAILURE']]]])
+            }
+        }
+    }
 }

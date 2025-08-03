@@ -40,15 +40,21 @@ pipeline {
     }
 
     post {
-        success {
-            script {
-                githubNotify(status: 'SUCCESS', description: '构建成功!')
-            }
-        }
-        failure {
-            script {
-                githubNotify(status: 'FAILURE', description: '构建失败!')
-            }
-        }
+   success {
+          script {
+              step([$class: 'GitHubCommitStatusSetter',
+                    reposSource: [$class: 'ManuallyEnteredRepositorySource', url: 'your-repo-url'],
+                    contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
+                    statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'SUCCESS', state: 'SUCCESS']]]])
+          }
+      }
+      failure {
+          script {
+              step([$class: 'GitHubCommitStatusSetter',
+                    reposSource: [$class: 'ManuallyEnteredRepositorySource', url: 'your-repo-url'],
+                    contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
+                    statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'FAILURE', state: 'FAILURE']]]])
+          }
+      }
     }
 }

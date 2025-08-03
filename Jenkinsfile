@@ -11,7 +11,7 @@ pipeline {
         stage('Build Admin') {
             steps {
                 sh 'echo "后台服务构建开始..."'
-                sh 'mvn clean package -pl admin -am -DskipTests'
+                sh 'mvn clean package -pl admin -am'
                 sh 'echo "后台服务构建完成..."'
             }
         }
@@ -32,12 +32,8 @@ pipeline {
                 // 停止并删除现有容器（如果存在）
                 sh 'docker stop admin-container || true'
                 sh 'docker rm admin-container || true'
-                sh 'docker stop front-container || true'
-                sh 'docker rm front-container || true'
-
                 // 运行新的容器
                 sh 'docker run -d --name admin-container -p 8080:8080 admin-service:latest'
-                sh 'docker run -d --name front-container -p 3000:3000 front-service:latest'
                 sh 'echo "部署完成..."'
             }
         }

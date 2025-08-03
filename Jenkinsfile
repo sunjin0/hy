@@ -43,7 +43,7 @@ pipeline {
    success {
           script {
               step([$class: 'GitHubCommitStatusSetter',
-                    reposSource: [$class: 'ManuallyEnteredRepositorySource', url: 'your-repo-url'],
+                    reposSource: [$class: 'ManuallyEnteredRepositorySource', url: 'https://github.com/sunjin0/hy.git'],
                     contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
                     statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'SUCCESS', state: 'SUCCESS']]]])
           }
@@ -51,7 +51,7 @@ pipeline {
       failure {
           script {
               step([$class: 'GitHubCommitStatusSetter',
-                    reposSource: [$class: 'ManuallyEnteredRepositorySource', url: 'your-repo-url'],
+                    reposSource: [$class: 'ManuallyEnteredRepositorySource', url: 'https://github.com/sunjin0/hy.git'],
                     contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
                     statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'FAILURE', state: 'FAILURE']]]])
           }

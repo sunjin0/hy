@@ -43,14 +43,14 @@ pipeline {
             script {
                 step([$class: 'GitHubCommitStatusSetter',
                       contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
-                      statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'SUCCESS', state: 'SUCCESS']]]])
+                      statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: '测试环境发布成功', state: 'SUCCESS']]]])
             }
         }
         failure {
             script {
                 step([$class: 'GitHubCommitStatusSetter',
                       contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
-                      statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: 'FAILURE', state: 'FAILURE']]]])
+                      statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: '测试环境发布失败', state: 'FAILURE']]]])
             }
         }
     }

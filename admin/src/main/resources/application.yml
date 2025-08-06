@@ -1,3 +1,4 @@
+
 spring:
   profiles:
     active: dev
@@ -8,3 +9,5 @@ spring:
     # 默认区域，可以写多个，用逗号分隔
     fallback-to-system-locale: true
     always-use-message-format: false
+server:
+  port: 9080

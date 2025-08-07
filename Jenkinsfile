@@ -56,7 +56,7 @@ pipeline {
         failure {
             script {
                 step([$class: 'GitHubCommitStatusSetter',
-                      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci',
+                      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
                       statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: '测试环境发布失败', state: 'FAILURE']]]])
             }
         }

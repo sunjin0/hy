@@ -17,7 +17,8 @@ pipeline {
                                                   statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: '处理中...', state: 'PENDING']]]])
                  }
                 sh 'echo "后台服务构建开始..."'
-                sh 'mvn clean package -pl admin -am'
+                // 使用test配置文件进行打包
+                sh 'mvn clean package -pl admin -am -Dspring.profiles.active=test'
                 sh 'echo "后台服务构建完成..."'
             }
         }
@@ -55,7 +56,7 @@ pipeline {
         failure {
             script {
                 step([$class: 'GitHubCommitStatusSetter',
-                      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
+                      contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci',
                       statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: '测试环境发布失败', state: 'FAILURE']]]])
             }
         }

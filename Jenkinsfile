@@ -9,6 +9,13 @@ pipeline {
         }
 
         stage('Build Admin') {
+           steps {
+                        // 设置github处理中状态
+                        script{
+                        step([$class: 'GitHubCommitStatusSetter',
+                                              contextSource: [$class: 'ManuallyEnteredCommitContextSource', context: 'jenkins-ci'],
+                                              statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: '处理中...', state: 'PENDING']]]])
+                        }
             steps {
                 sh 'echo "后台服务构建开始..."'
                 sh 'mvn clean package -pl admin -am'

@@ -26,7 +26,7 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 sh 'echo "构建 Docker 镜像..."'
-                sh 'docker rmi admin-service'
+                sh 'docker rmi admin-service:latest|| true'
                 // 为 admin 服务构建 Docker 镜像
                 sh 'docker build -t admin-service:latest admin/'
                 sh 'echo "Docker 镜像构建完成..."'

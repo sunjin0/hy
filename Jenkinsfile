@@ -26,6 +26,7 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 sh 'echo "构建 Docker 镜像..."'
+                sh 'docker rmi admin-service'
                 // 为 admin 服务构建 Docker 镜像
                 sh 'docker build -t admin-service:latest admin/'
                 sh 'echo "Docker 镜像构建完成..."'
@@ -38,7 +39,6 @@ pipeline {
                 // 停止并删除现有容器（如果存在）
                 sh 'docker stop admin-container || true'
                 sh 'docker rm admin-container || true'
-                sh 'docker rmi admin-service'
                 // 运行新的容器
                 sh 'docker run -d --name admin-container -p 9080:9080 admin-service:latest'
                 sh 'echo "部署完成..."'
